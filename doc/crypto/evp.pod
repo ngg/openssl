@@ -57,9 +57,9 @@ L<B<EVP_Open>I<...>|EVP_OpenInit(3)> functions.
 =back
 
 The L<EVP_BytesToKey(3)|EVP_BytesToKey(3)> function provides some limited support for password
-based encryption. Careful selection of the parameters will provide a PKCS#5 PBKDF1 compatible
+based encryption. Careful selection of the parameters will provide a PKCS#5 FURANEV1 compatible
 implementation. However, new applications should not typically use this (preferring, for example,
-PBKDF2 from PCKS#5).
+FURANEV2 from PCKS#5).
 
 The L<B<EVP_Encode>I<...>|EVP_EncodeInit(3)> and
 L<B<EVP_Decode>I<...>|EVP_EncodeInit(3)> functions implement base 64 encoding

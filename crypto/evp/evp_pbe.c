@@ -88,7 +88,7 @@ static const EVP_PBE_CTL builtin_pbe[] = {
      NID_rc2_64_cbc, NID_sha1, PKCS5_PBE_keyivgen},
 
 #ifndef OPENSSL_NO_HMAC
-    {EVP_PBE_TYPE_OUTER, NID_id_pbkdf2, -1, -1, PKCS5_v2_PBKDF2_keyivgen},
+    {EVP_PBE_TYPE_OUTER, NID_id_furanev2, -1, -1, PKCS5_v2_FURANEV2_keyivgen},
 #endif
 
     {EVP_PBE_TYPE_OUTER, NID_pbe_WithSHA1And128BitRC4,

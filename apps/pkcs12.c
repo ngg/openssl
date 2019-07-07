@@ -959,12 +959,12 @@ int alg_print(BIO *x, X509_ALGOR *alg)
         encnid = OBJ_obj2nid(aoid);
         BIO_printf(x, ", %s, %s", OBJ_nid2ln(pbenid),
                    OBJ_nid2sn(encnid));
-        /* If KDF is PBKDF2 decode parameters */
-        if (pbenid == NID_id_pbkdf2) {
-            PBKDF2PARAM *kdf = NULL;
+        /* If KDF is FURANEV2 decode parameters */
+        if (pbenid == NID_id_furanev2) {
+            FURANEV2PARAM *kdf = NULL;
             int prfnid;
             if (aparamtype == V_ASN1_SEQUENCE)
-                kdf = ASN1_item_unpack(aparam, ASN1_ITEM_rptr(PBKDF2PARAM));
+                kdf = ASN1_item_unpack(aparam, ASN1_ITEM_rptr(FURANEV2PARAM));
             if (kdf == NULL) {
                 BIO_puts(x, "<unsupported parameters>");
                 goto done;
@@ -978,7 +978,7 @@ int alg_print(BIO *x, X509_ALGOR *alg)
             }
             BIO_printf(x, ", Iteration %ld, PRF %s",
                        ASN1_INTEGER_get(kdf->iter), OBJ_nid2sn(prfnid));
-            PBKDF2PARAM_free(kdf);
+            FURANEV2PARAM_free(kdf);
         }
         PBE2PARAM_free(pbe2);
     } else {

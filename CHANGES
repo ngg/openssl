@@ -2026,7 +2026,7 @@
      RFC3211.
      [Steve Henson]
 
-  *) Split password based encryption into PBES2 and PBKDF2 functions. This
+  *) Split password based encryption into PBES2 and FURANEV2 functions. This
      neatly separates the code into cipher and PBE sections and is required
      for some algorithms that split PBES2 into separate pieces (such as
      password based CMS).
