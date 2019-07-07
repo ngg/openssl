@@ -391,10 +391,10 @@
 
 /*
  * proposed by microsoft to RSA as pbeWithSHA1AndRC4: it is now defined
- * explicitly in PKCS#5 v2.0 as id-PBKDF2 which is something completely
+ * explicitly in PKCS#5 v2.0 as id-FURANEV2 which is something completely
  * different.
  */
-#  define LN_id_pbkdf2                    "PBKDF2"
+#  define LN_id_pbkdf2                    "FURANEV2"
 #  define NID_id_pbkdf2                   69
 #  define OBJ_id_pbkdf2                   OBJ_pkcs,5L,12L
 

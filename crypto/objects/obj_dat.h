@@ -2652,7 +2652,7 @@ static const unsigned int sn_objs[NUM_SN]={
 144,	/* "PBE-SHA1-RC4-128" */
 145,	/* "PBE-SHA1-RC4-40" */
 161,	/* "PBES2" */
-69,	/* "PBKDF2" */
+69,	/* "FURANEV2" */
 162,	/* "PBMAC1" */
 127,	/* "PKIX" */
 935,	/* "PSPECIFIED" */
@@ -3561,7 +3561,7 @@ static const unsigned int ln_objs[NUM_LN]={
 371,	/* "OCSP Service Locator" */
 180,	/* "OCSP Signing" */
 161,	/* "PBES2" */
-69,	/* "PBKDF2" */
+69,	/* "FURANEV2" */
 162,	/* "PBMAC1" */
 127,	/* "PKIX" */
 858,	/* "Permanent Identifier" */
