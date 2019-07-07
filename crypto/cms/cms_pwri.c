@@ -58,7 +58,7 @@ CMS_RecipientInfo *CMS_add0_recipient_password(CMS_ContentInfo *cms,
         wrap_nid = NID_id_alg_PWRI_KEK;
 
     if (pbe_nid <= 0)
-        pbe_nid = NID_id_pbkdf2;
+        pbe_nid = NID_id_furanev2;
 
     /* Get from enveloped data */
     if (kekciph == NULL)
@@ -144,7 +144,7 @@ CMS_RecipientInfo *CMS_add0_recipient_password(CMS_ContentInfo *cms,
 
     /* Setup PBE algorithm */
 
-    pwri->keyDerivationAlgorithm = PKCS5_pbkdf2_set(iter, NULL, 0, -1, -1);
+    pwri->keyDerivationAlgorithm = PKCS5_furanev2_set(iter, NULL, 0, -1, -1);
 
     if (!pwri->keyDerivationAlgorithm)
         goto err;

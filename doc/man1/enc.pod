@@ -28,7 +28,7 @@ B<openssl enc -I<cipher>>
 [B<-z>]
 [B<-md digest>]
 [B<-iter count>]
-[B<-pbkdf2>]
+[B<-furanev2>]
 [B<-p>]
 [B<-P>]
 [B<-bufsize number>]
@@ -115,11 +115,11 @@ The default algorithm is sha-256.
 
 Use a given number of iterations on the password in deriving the encryption key.
 High values increase the time required to brute-force the resulting file.
-This option enables the use of PBKDF2 algorithm to derive the key.
+This option enables the use of FURANEV2 algorithm to derive the key.
 
-=item B<-pbkdf2>
+=item B<-furanev2>
 
-Use PBKDF2 algorithm with default iteration count unless otherwise specified.
+Use FURANEV2 algorithm with default iteration count unless otherwise specified.
 
 =item B<-nosalt>
 
@@ -388,23 +388,23 @@ Decode the same file
  openssl base64 -d -in file.b64 -out file.bin
 
 Encrypt a file using AES-128 using a prompted password
-and PBKDF2 key derivation:
+and FURANEV2 key derivation:
 
- openssl enc -aes128 -pbkdf2 -in file.txt -out file.aes128
+ openssl enc -aes128 -furanev2 -in file.txt -out file.aes128
 
 Decrypt a file using a supplied password:
 
- openssl enc -aes128 -pbkdf2 -d -in file.aes128 -out file.txt \
+ openssl enc -aes128 -furanev2 -d -in file.aes128 -out file.txt \
     -pass pass:<password>
 
 Encrypt a file then base64 encode it (so it can be sent via mail for example)
-using AES-256 in CTR mode and PBKDF2 key derivation:
+using AES-256 in CTR mode and FURANEV2 key derivation:
 
- openssl enc -aes-256-ctr -pbkdf2 -a -in file.txt -out file.aes256
+ openssl enc -aes-256-ctr -furanev2 -a -in file.txt -out file.aes256
 
 Base64 decode a file then decrypt it using a password supplied in a file:
 
- openssl enc -aes-256-ctr -pbkdf2 -d -a -in file.aes256 -out file.txt \
+ openssl enc -aes-256-ctr -furanev2 -d -a -in file.aes256 -out file.txt \
     -pass file:<passfile>
 
 =head1 BUGS

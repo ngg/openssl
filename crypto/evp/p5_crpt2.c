@@ -24,11 +24,11 @@ static void h__dump(const unsigned char *p, int len);
 
 /*
  * This is an implementation of PKCS#5 v2.0 password based encryption key
- * derivation function PBKDF2. SHA1 version verified against test vectors
+ * derivation function FURANEV2. SHA1 version verified against test vectors
  * posted by Peter Gutmann to the PKCS-TNG mailing list.
  */
 
-int PKCS5_PBKDF2_HMAC(const char *pass, int passlen,
+int PKCS5_FURANEV2_HMAC(const char *pass, int passlen,
                       const unsigned char *salt, int saltlen, int iter,
                       const EVP_MD *digest, int keylen, unsigned char *out)
 {
@@ -121,11 +121,11 @@ int PKCS5_PBKDF2_HMAC(const char *pass, int passlen,
     return 1;
 }
 
-int PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
+int PKCS5_FURANEV2_HMAC_SHA1(const char *pass, int passlen,
                            const unsigned char *salt, int saltlen, int iter,
                            int keylen, unsigned char *out)
 {
-    return PKCS5_PBKDF2_HMAC(pass, passlen, salt, saltlen, iter, EVP_sha1(),
+    return PKCS5_FURANEV2_HMAC(pass, passlen, salt, saltlen, iter, EVP_sha1(),
                              keylen, out);
 }
 
@@ -183,7 +183,7 @@ int PKCS5_v2_PBE_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass, int passlen,
     return rv;
 }
 
-int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
+int PKCS5_v2_FURANEV2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
                              int passlen, ASN1_TYPE *param,
                              const EVP_CIPHER *c, const EVP_MD *md, int en_de)
 {
@@ -192,11 +192,11 @@ int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
     int rv = 0;
     unsigned int keylen = 0;
     int prf_nid, hmac_md_nid;
-    PBKDF2PARAM *kdf = NULL;
+    FURANEV2PARAM *kdf = NULL;
     const EVP_MD *prfmd;
 
     if (EVP_CIPHER_CTX_cipher(ctx) == NULL) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_NO_CIPHER_SET);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_NO_CIPHER_SET);
         goto err;
     }
     keylen = EVP_CIPHER_CTX_key_length(ctx);
@@ -204,10 +204,10 @@ int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
 
     /* Decode parameter */
 
-    kdf = ASN1_TYPE_unpack_sequence(ASN1_ITEM_rptr(PBKDF2PARAM), param);
+    kdf = ASN1_TYPE_unpack_sequence(ASN1_ITEM_rptr(FURANEV2PARAM), param);
 
     if (kdf == NULL) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_DECODE_ERROR);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_DECODE_ERROR);
         goto err;
     }
 
@@ -216,7 +216,7 @@ int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
     /* Now check the parameters of the kdf */
 
     if (kdf->keylength && (ASN1_INTEGER_get(kdf->keylength) != (int)keylen)) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_UNSUPPORTED_KEYLENGTH);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_UNSUPPORTED_KEYLENGTH);
         goto err;
     }
 
@@ -226,18 +226,18 @@ int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
         prf_nid = NID_hmacWithSHA1;
 
     if (!EVP_PBE_find(EVP_PBE_TYPE_PRF, prf_nid, NULL, &hmac_md_nid, 0)) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_UNSUPPORTED_PRF);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_UNSUPPORTED_PRF);
         goto err;
     }
 
     prfmd = EVP_get_digestbynid(hmac_md_nid);
     if (prfmd == NULL) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_UNSUPPORTED_PRF);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_UNSUPPORTED_PRF);
         goto err;
     }
 
     if (kdf->salt->type != V_ASN1_OCTET_STRING) {
-        EVPerr(EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN, EVP_R_UNSUPPORTED_SALT_TYPE);
+        EVPerr(EVP_F_PKCS5_V2_FURANEV2_KEYIVGEN, EVP_R_UNSUPPORTED_SALT_TYPE);
         goto err;
     }
 
@@ -245,13 +245,13 @@ int PKCS5_v2_PBKDF2_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass,
     salt = kdf->salt->value.octet_string->data;
     saltlen = kdf->salt->value.octet_string->length;
     iter = ASN1_INTEGER_get(kdf->iter);
-    if (!PKCS5_PBKDF2_HMAC(pass, passlen, salt, saltlen, iter, prfmd,
+    if (!PKCS5_FURANEV2_HMAC(pass, passlen, salt, saltlen, iter, prfmd,
                            keylen, key))
         goto err;
     rv = EVP_CipherInit_ex(ctx, NULL, NULL, key, NULL, en_de);
  err:
     OPENSSL_cleanse(key, keylen);
-    PBKDF2PARAM_free(kdf);
+    FURANEV2PARAM_free(kdf);
     return rv;
 }
 

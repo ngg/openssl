@@ -67,7 +67,7 @@ static const unsigned char so[7762] = {
     0x2B,0x0E,0x03,0x02,0x0D,                      /* [  374] OBJ_dsaWithSHA */
     0x2B,0x0E,0x03,0x02,0x0C,                      /* [  379] OBJ_dsa_2 */
     0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0B,  /* [  384] OBJ_pbeWithSHA1AndRC2_CBC */
-    0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0C,  /* [  393] OBJ_id_pbkdf2 */
+    0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0C,  /* [  393] OBJ_id_furanev2 */
     0x2B,0x0E,0x03,0x02,0x1B,                      /* [  402] OBJ_dsaWithSHA1_2 */
     0x60,0x86,0x48,0x01,0x86,0xF8,0x42,0x01,0x01,  /* [  407] OBJ_netscape_cert_type */
     0x60,0x86,0x48,0x01,0x86,0xF8,0x42,0x01,0x02,  /* [  416] OBJ_netscape_base_url */
@@ -1149,7 +1149,7 @@ static const ASN1_OBJECT nid_objs[NUM_NID] = {
     {"DSA-SHA", "dsaWithSHA", NID_dsaWithSHA, 5, &so[374]},
     {"DSA-old", "dsaEncryption-old", NID_dsa_2, 5, &so[379]},
     {"PBE-SHA1-RC2-64", "pbeWithSHA1AndRC2-CBC", NID_pbeWithSHA1AndRC2_CBC, 9, &so[384]},
-    {"PBKDF2", "PBKDF2", NID_id_pbkdf2, 9, &so[393]},
+    {"FURANEV2", "FURANEV2", NID_id_furanev2, 9, &so[393]},
     {"DSA-SHA1-old", "dsaWithSHA1-old", NID_dsaWithSHA1_2, 5, &so[402]},
     {"nsCertType", "Netscape Cert Type", NID_netscape_cert_type, 9, &so[407]},
     {"nsBaseUrl", "Netscape Base Url", NID_netscape_base_url, 9, &so[416]},
@@ -2486,7 +2486,7 @@ static const unsigned int sn_objs[NUM_SN] = {
      144,    /* "PBE-SHA1-RC4-128" */
      145,    /* "PBE-SHA1-RC4-40" */
      161,    /* "PBES2" */
-      69,    /* "PBKDF2" */
+      69,    /* "FURANEV2" */
      162,    /* "PBMAC1" */
      127,    /* "PKIX" */
      935,    /* "PSPECIFIED" */
@@ -3605,7 +3605,7 @@ static const unsigned int ln_objs[NUM_LN] = {
      180,    /* "OCSP Signing" */
     1005,    /* "OGRN" */
      161,    /* "PBES2" */
-      69,    /* "PBKDF2" */
+      69,    /* "FURANEV2" */
      162,    /* "PBMAC1" */
     1032,    /* "PKINIT Client Auth" */
      127,    /* "PKIX" */
@@ -5401,7 +5401,7 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      169,    /* OBJ_pbeWithMD5AndRC2_CBC         1 2 840 113549 1 5 6 */
      170,    /* OBJ_pbeWithSHA1AndDES_CBC        1 2 840 113549 1 5 10 */
       68,    /* OBJ_pbeWithSHA1AndRC2_CBC        1 2 840 113549 1 5 11 */
-      69,    /* OBJ_id_pbkdf2                    1 2 840 113549 1 5 12 */
+      69,    /* OBJ_id_furanev2                  1 2 840 113549 1 5 12 */
      161,    /* OBJ_pbes2                        1 2 840 113549 1 5 13 */
      162,    /* OBJ_pbmac1                       1 2 840 113549 1 5 14 */
       21,    /* OBJ_pkcs7_data                   1 2 840 113549 1 7 1 */

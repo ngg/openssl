@@ -67,7 +67,7 @@ sha1WithRSAEncryption		65
 dsaWithSHA		66
 dsa_2		67
 pbeWithSHA1AndRC2_CBC		68
-id_pbkdf2		69
+id_furanev2		69
 dsaWithSHA1_2		70
 netscape_cert_type		71
 netscape_base_url		72

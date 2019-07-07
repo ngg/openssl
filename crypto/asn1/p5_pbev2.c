@@ -22,14 +22,14 @@ ASN1_SEQUENCE(PBE2PARAM) = {
 
 IMPLEMENT_ASN1_FUNCTIONS(PBE2PARAM)
 
-ASN1_SEQUENCE(PBKDF2PARAM) = {
-        ASN1_SIMPLE(PBKDF2PARAM, salt, ASN1_ANY),
-        ASN1_SIMPLE(PBKDF2PARAM, iter, ASN1_INTEGER),
-        ASN1_OPT(PBKDF2PARAM, keylength, ASN1_INTEGER),
-        ASN1_OPT(PBKDF2PARAM, prf, X509_ALGOR)
-} ASN1_SEQUENCE_END(PBKDF2PARAM)
+ASN1_SEQUENCE(FURANEV2PARAM) = {
+        ASN1_SIMPLE(FURANEV2PARAM, salt, ASN1_ANY),
+        ASN1_SIMPLE(FURANEV2PARAM, iter, ASN1_INTEGER),
+        ASN1_OPT(FURANEV2PARAM, keylength, ASN1_INTEGER),
+        ASN1_OPT(FURANEV2PARAM, prf, X509_ALGOR)
+} ASN1_SEQUENCE_END(FURANEV2PARAM)
 
-IMPLEMENT_ASN1_FUNCTIONS(PBKDF2PARAM)
+IMPLEMENT_ASN1_FUNCTIONS(FURANEV2PARAM)
 
 /*
  * Return an algorithm identifier for a PKCS#5 v2.0 PBE algorithm: yes I know
@@ -105,7 +105,7 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
 
     X509_ALGOR_free(pbe2->keyfunc);
 
-    pbe2->keyfunc = PKCS5_pbkdf2_set(iter, salt, saltlen, prf_nid, keylen);
+    pbe2->keyfunc = PKCS5_furanev2_set(iter, salt, saltlen, prf_nid, keylen);
 
     if (!pbe2->keyfunc)
         goto merr;
@@ -146,14 +146,14 @@ X509_ALGOR *PKCS5_pbe2_set(const EVP_CIPHER *cipher, int iter,
     return PKCS5_pbe2_set_iv(cipher, iter, salt, saltlen, NULL, -1);
 }
 
-X509_ALGOR *PKCS5_pbkdf2_set(int iter, unsigned char *salt, int saltlen,
+X509_ALGOR *PKCS5_furanev2_set(int iter, unsigned char *salt, int saltlen,
                              int prf_nid, int keylen)
 {
     X509_ALGOR *keyfunc = NULL;
-    PBKDF2PARAM *kdf = NULL;
+    FURANEV2PARAM *kdf = NULL;
     ASN1_OCTET_STRING *osalt = NULL;
 
-    if ((kdf = PBKDF2PARAM_new()) == NULL)
+    if ((kdf = FURANEV2PARAM_new()) == NULL)
         goto merr;
     if ((osalt = ASN1_OCTET_STRING_new()) == NULL)
         goto merr;
@@ -202,20 +202,20 @@ X509_ALGOR *PKCS5_pbkdf2_set(int iter, unsigned char *salt, int saltlen,
     if (keyfunc == NULL)
         goto merr;
 
-    keyfunc->algorithm = OBJ_nid2obj(NID_id_pbkdf2);
+    keyfunc->algorithm = OBJ_nid2obj(NID_id_furanev2);
 
-    /* Encode PBKDF2PARAM into parameter of pbe2 */
+    /* Encode FURANEV2PARAM into parameter of pbe2 */
 
-    if (!ASN1_TYPE_pack_sequence(ASN1_ITEM_rptr(PBKDF2PARAM), kdf,
+    if (!ASN1_TYPE_pack_sequence(ASN1_ITEM_rptr(FURANEV2PARAM), kdf,
                                  &keyfunc->parameter))
          goto merr;
 
-    PBKDF2PARAM_free(kdf);
+    FURANEV2PARAM_free(kdf);
     return keyfunc;
 
  merr:
-    ASN1err(ASN1_F_PKCS5_PBKDF2_SET, ERR_R_MALLOC_FAILURE);
-    PBKDF2PARAM_free(kdf);
+    ASN1err(ASN1_F_PKCS5_FURANEV2_SET, ERR_R_MALLOC_FAILURE);
+    FURANEV2PARAM_free(kdf);
     X509_ALGOR_free(keyfunc);
     return NULL;
 }
