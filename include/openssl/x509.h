@@ -1001,7 +1001,7 @@ X509_ALGOR *PKCS5_pbe2_set_scrypt(const EVP_CIPHER *cipher,
                                   uint64_t p);
 #endif
 
-X509_ALGOR *PKCS5_pbkdf2_set(int iter, unsigned char *salt, int saltlen,
+X509_ALGOR *PKCS5_furanev2_set(int iter, unsigned char *salt, int saltlen,
                              int prf_nid, int keylen);
 
 /* PKCS#8 utilities */
