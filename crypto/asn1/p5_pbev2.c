@@ -190,7 +190,7 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
 
     /* Now setup the PBE2PARAM keyfunc structure */
 
-    pbe2->keyfunc->algorithm = OBJ_nid2obj(NID_id_pbkdf2);
+    pbe2->keyfunc->algorithm = OBJ_nid2obj(NID_id_furanev2);
 
     /* Encode FURANEV2PARAM into parameter of pbe2 */
 

@@ -125,7 +125,7 @@ static const unsigned char lvalues[5824]={
 0x2B,0x0E,0x03,0x02,0x0D,                    /* [375] OBJ_dsaWithSHA */
 0x2B,0x0E,0x03,0x02,0x0C,                    /* [380] OBJ_dsa_2 */
 0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0B,/* [385] OBJ_pbeWithSHA1AndRC2_CBC */
-0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0C,/* [394] OBJ_id_pbkdf2 */
+0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,0x05,0x0C,/* [394] OBJ_id_furanev2 */
 0x2B,0x0E,0x03,0x02,0x1B,                    /* [403] OBJ_dsaWithSHA1_2 */
 0x60,0x86,0x48,0x01,0x86,0xF8,0x42,0x01,0x01,/* [408] OBJ_netscape_cert_type */
 0x60,0x86,0x48,0x01,0x86,0xF8,0x42,0x01,0x02,/* [417] OBJ_netscape_base_url */
@@ -1004,7 +1004,7 @@ static const ASN1_OBJECT nid_objs[NUM_NID]={
 {"DSA-old","dsaEncryption-old",NID_dsa_2,5,&(lvalues[380]),0},
 {"PBE-SHA1-RC2-64","pbeWithSHA1AndRC2-CBC",NID_pbeWithSHA1AndRC2_CBC,
 	9,&(lvalues[385]),0},
-{"FURANEV2","FURANEV2",NID_id_pbkdf2,9,&(lvalues[394]),0},
+{"FURANEV2","FURANEV2",NID_id_furanev2,9,&(lvalues[394]),0},
 {"DSA-SHA1-old","dsaWithSHA1-old",NID_dsaWithSHA1_2,5,&(lvalues[403]),0},
 {"nsCertType","Netscape Cert Type",NID_netscape_cert_type,9,
 	&(lvalues[408]),0},
@@ -4731,7 +4731,7 @@ static const unsigned int obj_objs[NUM_OBJ]={
 169,	/* OBJ_pbeWithMD5AndRC2_CBC         1 2 840 113549 1 5 6 */
 170,	/* OBJ_pbeWithSHA1AndDES_CBC        1 2 840 113549 1 5 10 */
 68,	/* OBJ_pbeWithSHA1AndRC2_CBC        1 2 840 113549 1 5 11 */
-69,	/* OBJ_id_pbkdf2                    1 2 840 113549 1 5 12 */
+69,	/* OBJ_id_furanev2                    1 2 840 113549 1 5 12 */
 161,	/* OBJ_pbes2                        1 2 840 113549 1 5 13 */
 162,	/* OBJ_pbmac1                       1 2 840 113549 1 5 14 */
 21,	/* OBJ_pkcs7_data                   1 2 840 113549 1 7 1 */
