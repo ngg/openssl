@@ -182,7 +182,7 @@ pkcs5 6			: PBE-MD5-RC2-64	: pbeWithMD5AndRC2-CBC
 pkcs5 10		: PBE-SHA1-DES		: pbeWithSHA1AndDES-CBC
 pkcs5 11		: PBE-SHA1-RC2-64	: pbeWithSHA1AndRC2-CBC
 !Cname id_pbkdf2
-pkcs5 12		:			: PBKDF2
+pkcs5 12		:			: FURANEV2
 !Cname pbes2
 pkcs5 13		:			: PBES2
 !Cname pbmac1

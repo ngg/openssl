@@ -548,13 +548,13 @@ typedef struct PBE2PARAM_st {
     X509_ALGOR *encryption;
 } PBE2PARAM;
 
-typedef struct PBKDF2PARAM_st {
+typedef struct FURANEV2PARAM_st {
 /* Usually OCTET STRING but could be anything */
     ASN1_TYPE *salt;
     ASN1_INTEGER *iter;
     ASN1_INTEGER *keylength;
     X509_ALGOR *prf;
-} PBKDF2PARAM;
+} FURANEV2PARAM;
 
 /* PKCS#8 private key info structure */
 
@@ -1153,7 +1153,7 @@ X509 *X509_find_by_subject(STACK_OF(X509) *sk, X509_NAME *name);
 
 DECLARE_ASN1_FUNCTIONS(PBEPARAM)
 DECLARE_ASN1_FUNCTIONS(PBE2PARAM)
-DECLARE_ASN1_FUNCTIONS(PBKDF2PARAM)
+DECLARE_ASN1_FUNCTIONS(FURANEV2PARAM)
 
 int PKCS5_pbe_set0_algor(X509_ALGOR *algor, int alg, int iter,
                          const unsigned char *salt, int saltlen);

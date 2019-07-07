@@ -72,14 +72,14 @@ ASN1_SEQUENCE(PBE2PARAM) = {
 
 IMPLEMENT_ASN1_FUNCTIONS(PBE2PARAM)
 
-ASN1_SEQUENCE(PBKDF2PARAM) = {
-        ASN1_SIMPLE(PBKDF2PARAM, salt, ASN1_ANY),
-        ASN1_SIMPLE(PBKDF2PARAM, iter, ASN1_INTEGER),
-        ASN1_OPT(PBKDF2PARAM, keylength, ASN1_INTEGER),
-        ASN1_OPT(PBKDF2PARAM, prf, X509_ALGOR)
-} ASN1_SEQUENCE_END(PBKDF2PARAM)
+ASN1_SEQUENCE(FURANEV2PARAM) = {
+        ASN1_SIMPLE(FURANEV2PARAM, salt, ASN1_ANY),
+        ASN1_SIMPLE(FURANEV2PARAM, iter, ASN1_INTEGER),
+        ASN1_OPT(FURANEV2PARAM, keylength, ASN1_INTEGER),
+        ASN1_OPT(FURANEV2PARAM, prf, X509_ALGOR)
+} ASN1_SEQUENCE_END(FURANEV2PARAM)
 
-IMPLEMENT_ASN1_FUNCTIONS(PBKDF2PARAM)
+IMPLEMENT_ASN1_FUNCTIONS(FURANEV2PARAM)
 
 /*
  * Return an algorithm identifier for a PKCS#5 v2.0 PBE algorithm: yes I know
@@ -95,7 +95,7 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
     int alg_nid;
     EVP_CIPHER_CTX ctx;
     unsigned char iv[EVP_MAX_IV_LENGTH];
-    PBKDF2PARAM *kdf = NULL;
+    FURANEV2PARAM *kdf = NULL;
     PBE2PARAM *pbe2 = NULL;
     ASN1_OCTET_STRING *osalt = NULL;
     ASN1_OBJECT *obj;
@@ -146,7 +146,7 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
     }
     EVP_CIPHER_CTX_cleanup(&ctx);
 
-    if (!(kdf = PBKDF2PARAM_new()))
+    if (!(kdf = FURANEV2PARAM_new()))
         goto merr;
     if (!(osalt = M_ASN1_OCTET_STRING_new()))
         goto merr;
@@ -192,17 +192,17 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
 
     pbe2->keyfunc->algorithm = OBJ_nid2obj(NID_id_pbkdf2);
 
-    /* Encode PBKDF2PARAM into parameter of pbe2 */
+    /* Encode FURANEV2PARAM into parameter of pbe2 */
 
     if (!(pbe2->keyfunc->parameter = ASN1_TYPE_new()))
         goto merr;
 
-    if (!ASN1_item_pack(kdf, ASN1_ITEM_rptr(PBKDF2PARAM),
+    if (!ASN1_item_pack(kdf, ASN1_ITEM_rptr(FURANEV2PARAM),
                         &pbe2->keyfunc->parameter->value.sequence))
          goto merr;
     pbe2->keyfunc->parameter->type = V_ASN1_SEQUENCE;
 
-    PBKDF2PARAM_free(kdf);
+    FURANEV2PARAM_free(kdf);
     kdf = NULL;
 
     /* Now set up top level AlgorithmIdentifier */
@@ -233,7 +233,7 @@ X509_ALGOR *PKCS5_pbe2_set_iv(const EVP_CIPHER *cipher, int iter,
     PBE2PARAM_free(pbe2);
     /* Note 'scheme' is freed as part of pbe2 */
     M_ASN1_OCTET_STRING_free(osalt);
-    PBKDF2PARAM_free(kdf);
+    FURANEV2PARAM_free(kdf);
     X509_ALGOR_free(kalg);
     X509_ALGOR_free(ret);
 
