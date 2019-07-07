@@ -537,7 +537,7 @@ ASN1_TYPE_cmp                           537	1_1_0	EXIST::FUNCTION:
 i2d_RSAPublicKey                        538	1_1_0	EXIST::FUNCTION:RSA
 EC_GROUP_get_trinomial_basis            539	1_1_0	EXIST::FUNCTION:EC,EC2M
 BIO_ADDRINFO_protocol                   540	1_1_0	EXIST::FUNCTION:SOCK
-i2d_PBKDF2PARAM                         541	1_1_0	EXIST::FUNCTION:
+i2d_FURANEV2PARAM                         541	1_1_0	EXIST::FUNCTION:
 ENGINE_unregister_RAND                  542	1_1_0	EXIST::FUNCTION:ENGINE
 PEM_write_bio_RSAPrivateKey             543	1_1_0	EXIST::FUNCTION:RSA
 CONF_get_number                         544	1_1_0	EXIST::FUNCTION:
@@ -1245,7 +1245,7 @@ PKCS7_RECIP_INFO_set                    1232	1_1_0	EXIST::FUNCTION:
 EC_POINT_is_on_curve                    1233	1_1_0	EXIST::FUNCTION:EC
 PKCS12_add_cert                         1234	1_1_0	EXIST::FUNCTION:
 X509_NAME_hash_old                      1235	1_1_0	EXIST::FUNCTION:
-PBKDF2PARAM_free                        1236	1_1_0	EXIST::FUNCTION:
+FURANEV2PARAM_free                        1236	1_1_0	EXIST::FUNCTION:
 i2d_CMS_ContentInfo                     1237	1_1_0	EXIST::FUNCTION:CMS
 EVP_CIPHER_meth_set_ctrl                1238	1_1_0	EXIST::FUNCTION:
 RSA_public_decrypt                      1239	1_1_0	EXIST::FUNCTION:RSA
@@ -1313,8 +1313,8 @@ TS_ACCURACY_free                        1301	1_1_0	EXIST::FUNCTION:TS
 PEM_write_DSA_PUBKEY                    1302	1_1_0	EXIST::FUNCTION:DSA,STDIO
 BN_rshift1                              1303	1_1_0	EXIST::FUNCTION:
 i2d_PKCS7_ENVELOPE                      1304	1_1_0	EXIST::FUNCTION:
-PBKDF2PARAM_it                          1305	1_1_0	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
-PBKDF2PARAM_it                          1305	1_1_0	EXIST:EXPORT_VAR_AS_FUNCTION:FUNCTION:
+FURANEV2PARAM_it                          1305	1_1_0	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
+FURANEV2PARAM_it                          1305	1_1_0	EXIST:EXPORT_VAR_AS_FUNCTION:FUNCTION:
 UI_get_result_maxsize                   1306	1_1_0	EXIST::FUNCTION:
 PBEPARAM_it                             1307	1_1_0	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
 PBEPARAM_it                             1307	1_1_0	EXIST:EXPORT_VAR_AS_FUNCTION:FUNCTION:
@@ -2656,7 +2656,7 @@ ASN1_PCTX_free                          2621	1_1_0	EXIST::FUNCTION:
 ESS_SIGNING_CERT_new                    2622	1_1_0	EXIST::FUNCTION:TS
 X509V3_EXT_conf_nid                     2623	1_1_0	EXIST::FUNCTION:
 EC_KEY_check_key                        2624	1_1_0	EXIST::FUNCTION:EC
-PKCS5_PBKDF2_HMAC                       2625	1_1_0	EXIST::FUNCTION:
+PKCS5_FURANEV2_HMAC                       2625	1_1_0	EXIST::FUNCTION:
 CONF_get_section                        2626	1_1_0	EXIST::FUNCTION:
 CMS_RecipientInfo_kari_decrypt          2627	1_1_0	EXIST::FUNCTION:CMS
 OBJ_add_sigid                           2628	1_1_0	EXIST::FUNCTION:
@@ -2673,7 +2673,7 @@ EC_GROUP_clear_free                     2636	1_1_0	EXIST::FUNCTION:EC
 BN_get_rfc2409_prime_1024               2637	1_1_0	EXIST::FUNCTION:
 CRYPTO_set_mem_functions                2638	1_1_0	EXIST::FUNCTION:
 i2d_ASN1_VISIBLESTRING                  2639	1_1_0	EXIST::FUNCTION:
-d2i_PBKDF2PARAM                         2640	1_1_0	EXIST::FUNCTION:
+d2i_FURANEV2PARAM                         2640	1_1_0	EXIST::FUNCTION:
 ERR_load_COMP_strings                   2641	1_1_0	EXIST::FUNCTION:COMP
 EVP_PKEY_meth_add0                      2642	1_1_0	EXIST::FUNCTION:
 EVP_rc4_40                              2643	1_1_0	EXIST::FUNCTION:RC4
@@ -3164,7 +3164,7 @@ OPENSSL_sk_deep_copy                    3116	1_1_0	EXIST::FUNCTION:
 i2d_RSA_PSS_PARAMS                      3117	1_1_0	EXIST::FUNCTION:RSA
 EVP_aes_128_wrap_pad                    3118	1_1_0	EXIST::FUNCTION:
 ASN1_BIT_STRING_set                     3119	1_1_0	EXIST::FUNCTION:
-PKCS5_PBKDF2_HMAC_SHA1                  3120	1_1_0	EXIST::FUNCTION:
+PKCS5_FURANEV2_HMAC_SHA1                  3120	1_1_0	EXIST::FUNCTION:
 RSA_padding_check_PKCS1_type_2          3121	1_1_0	EXIST::FUNCTION:RSA
 EVP_des_ede3_ecb                        3122	1_1_0	EXIST::FUNCTION:DES
 CBIGNUM_it                              3123	1_1_0	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
@@ -3532,7 +3532,7 @@ i2d_OCSP_BASICRESP                      3484	1_1_0	EXIST::FUNCTION:OCSP
 CMAC_Final                              3485	1_1_0	EXIST::FUNCTION:CMAC
 X509V3_EXT_add_alias                    3486	1_1_0	EXIST::FUNCTION:
 BN_get_params                           3487	1_1_0	EXIST::FUNCTION:DEPRECATEDIN_0_9_8
-PKCS5_pbkdf2_set                        3488	1_1_0	EXIST::FUNCTION:
+PKCS5_furanev2_set                        3488	1_1_0	EXIST::FUNCTION:
 d2i_PKCS8PrivateKey_bio                 3489	1_1_0	EXIST::FUNCTION:
 ASN1_ENUMERATED_new                     3490	1_1_0	EXIST::FUNCTION:
 ENGINE_register_digests                 3491	1_1_0	EXIST::FUNCTION:ENGINE
@@ -3938,7 +3938,7 @@ i2d_SXNETID                             3887	1_1_0	EXIST::FUNCTION:
 BN_mod_mul_montgomery                   3888	1_1_0	EXIST::FUNCTION:
 BN_nnmod                                3889	1_1_0	EXIST::FUNCTION:
 TS_RESP_CTX_set_status_info_cond        3890	1_1_0	EXIST::FUNCTION:TS
-PBKDF2PARAM_new                         3891	1_1_0	EXIST::FUNCTION:
+FURANEV2PARAM_new                         3891	1_1_0	EXIST::FUNCTION:
 ENGINE_set_RSA                          3892	1_1_0	EXIST::FUNCTION:ENGINE
 i2d_X509_ATTRIBUTE                      3893	1_1_0	EXIST::FUNCTION:
 PKCS7_ctrl                              3894	1_1_0	EXIST::FUNCTION:

@@ -240,7 +240,7 @@ static const ERR_STRING_DATA EVP_str_reasons[] = {
     "operaton not initialized"},
     {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PARTIALLY_OVERLAPPING),
     "partially overlapping buffers"},
-    {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PBKDF2_ERROR), "pbkdf2 error"},
+    {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_FURANEV2_ERROR), "furanev2 error"},
     {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PKEY_APPLICATION_ASN1_METHOD_ALREADY_REGISTERED),
     "pkey application asn1 method already registered"},
     {ERR_PACK(ERR_LIB_EVP, 0, EVP_R_PRIVATE_KEY_DECODE_ERROR),

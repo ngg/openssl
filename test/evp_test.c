@@ -1326,7 +1326,7 @@ static const EVP_TEST_METHOD pderive_test_method = {
 
 typedef enum pbe_type_enum {
     PBE_TYPE_INVALID = 0,
-    PBE_TYPE_SCRYPT, PBE_TYPE_PBKDF2, PBE_TYPE_PKCS12
+    PBE_TYPE_SCRYPT, PBE_TYPE_FURANEV2, PBE_TYPE_PKCS12
 } PBE_TYPE;
 
 typedef struct pbe_data_st {
@@ -1392,7 +1392,7 @@ static int scrypt_test_parse(EVP_TEST *t,
 }
 #endif
 
-static int pbkdf2_test_parse(EVP_TEST *t,
+static int furanev2_test_parse(EVP_TEST *t,
                              const char *keyword, const char *value)
 {
     PBE_DATA *pdata = t->data;
@@ -1423,7 +1423,7 @@ static int pkcs12_test_parse(EVP_TEST *t,
             return -1;
         return 1;
     }
-    return pbkdf2_test_parse(t, keyword, value);
+    return furanev2_test_parse(t, keyword, value);
 }
 
 static int pbe_test_init(EVP_TEST *t, const char *alg)
@@ -1438,8 +1438,8 @@ static int pbe_test_init(EVP_TEST *t, const char *alg)
         t->skip = 1;
         return 1;
 #endif
-    } else if (strcmp(alg, "pbkdf2") == 0) {
-        pbe_type = PBE_TYPE_PBKDF2;
+    } else if (strcmp(alg, "furanev2") == 0) {
+        pbe_type = PBE_TYPE_FURANEV2;
     } else if (strcmp(alg, "pkcs12") == 0) {
         pbe_type = PBE_TYPE_PKCS12;
     } else {
@@ -1471,8 +1471,8 @@ static int pbe_test_parse(EVP_TEST *t,
         return parse_bin(value, &pdata->salt, &pdata->salt_len);
     if (strcmp(keyword, "Key") == 0)
         return parse_bin(value, &pdata->key, &pdata->key_len);
-    if (pdata->pbe_type == PBE_TYPE_PBKDF2)
-        return pbkdf2_test_parse(t, keyword, value);
+    if (pdata->pbe_type == PBE_TYPE_FURANEV2)
+        return furanev2_test_parse(t, keyword, value);
     else if (pdata->pbe_type == PBE_TYPE_PKCS12)
         return pkcs12_test_parse(t, keyword, value);
 #ifndef OPENSSL_NO_SCRYPT
@@ -1491,12 +1491,12 @@ static int pbe_test_run(EVP_TEST *t)
         t->err = "INTERNAL_ERROR";
         goto err;
     }
-    if (expected->pbe_type == PBE_TYPE_PBKDF2) {
-        if (PKCS5_PBKDF2_HMAC((char *)expected->pass, expected->pass_len,
+    if (expected->pbe_type == PBE_TYPE_FURANEV2) {
+        if (PKCS5_FURANEV2_HMAC((char *)expected->pass, expected->pass_len,
                               expected->salt, expected->salt_len,
                               expected->iter, expected->md,
                               expected->key_len, key) == 0) {
-            t->err = "PBKDF2_ERROR";
+            t->err = "FURANEV2_ERROR";
             goto err;
         }
 #ifndef OPENSSL_NO_SCRYPT
