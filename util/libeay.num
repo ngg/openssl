@@ -4143,7 +4143,7 @@ GENERAL_NAME_get0_otherName             4511	EXIST::FUNCTION:
 d2i_ESS_CERT_ID                         4512	EXIST::FUNCTION:
 OBJ_find_sigid_algs                     4513	EXIST::FUNCTION:
 EVP_PKEY_meth_set_keygen                4514	EXIST::FUNCTION:
-PKCS5_FURANEV2_HMAC                       4515	EXIST::FUNCTION:
+PKCS5_FURANEV2_HMAC                     4515	EXIST::FUNCTION:
 EVP_PKEY_paramgen                       4516	EXIST::FUNCTION:
 EVP_PKEY_meth_set_paramgen              4517	EXIST::FUNCTION:
 BIO_new_PKCS7                           4518	EXIST::FUNCTION:
