@@ -1448,7 +1448,7 @@ i2d_PKCS8_PRIV_KEY_INFO_fp              1791	EXIST::FUNCTION:FP_API
 i2d_PKCS8_PRIV_KEY_INFO_bio             1792	EXIST::FUNCTION:BIO
 BIO_s_bio                               1793	EXIST::FUNCTION:
 PKCS5_pbe2_set                          1794	EXIST::FUNCTION:
-PKCS5_FURANEV2_HMAC_SHA1                  1795	EXIST::FUNCTION:
+PKCS5_FURANEV2_HMAC_SHA1                1795	EXIST::FUNCTION:
 PKCS5_v2_PBE_keyivgen                   1796	EXIST::FUNCTION:
 PEM_write_bio_PKCS8PrivateKey           1797	EXIST::FUNCTION:
 PEM_write_PKCS8PrivateKey               1798	EXIST::FUNCTION:
@@ -1970,8 +1970,8 @@ X509_print_ex                           2544	EXIST::FUNCTION:BIO
 OCSP_ONEREQ_get1_ext_d2i                2545	EXIST::FUNCTION:
 ENGINE_register_all_RAND                2546	EXIST::FUNCTION:ENGINE
 ENGINE_load_dynamic                     2547	EXIST::FUNCTION:ENGINE
-FURANEV2PARAM_it                          2548	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
-FURANEV2PARAM_it                          2548	EXIST:EXPORT_VAR_AS_FUNCTION:FUNCTION:
+FURANEV2PARAM_it                        2548	EXIST:!EXPORT_VAR_AS_FUNCTION:VARIABLE:
+FURANEV2PARAM_it                        2548	EXIST:EXPORT_VAR_AS_FUNCTION:FUNCTION:
 EXTENDED_KEY_USAGE_new                  2549	EXIST::FUNCTION:
 EC_GROUP_clear_free                     2550	EXIST::FUNCTION:EC
 OCSP_sendreq_bio                        2551	EXIST::FUNCTION:
