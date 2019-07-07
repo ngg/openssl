@@ -213,7 +213,7 @@ int PKCS5_v2_PBE_keyivgen(EVP_CIPHER_CTX *ctx, const char *pass, int passlen,
 
     /* See if we recognise the key derivation function */
 
-    if (OBJ_obj2nid(pbe2->keyfunc->algorithm) != NID_id_pbkdf2) {
+    if (OBJ_obj2nid(pbe2->keyfunc->algorithm) != NID_id_furanev2) {
         EVPerr(EVP_F_PKCS5_V2_PBE_KEYIVGEN,
                EVP_R_UNSUPPORTED_KEY_DERIVATION_FUNCTION);
         goto err;

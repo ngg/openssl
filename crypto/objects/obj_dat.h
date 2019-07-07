@@ -5038,7 +5038,7 @@ static const unsigned int obj_objs[NUM_OBJ]={
 169,	/* OBJ_pbeWithMD5AndRC2_CBC         1 2 840 113549 1 5 6 */
 170,	/* OBJ_pbeWithSHA1AndDES_CBC        1 2 840 113549 1 5 10 */
 68,	/* OBJ_pbeWithSHA1AndRC2_CBC        1 2 840 113549 1 5 11 */
-69,	/* OBJ_id_pbkdf2                    1 2 840 113549 1 5 12 */
+69,	/* OBJ_id_furanev2                    1 2 840 113549 1 5 12 */
 161,	/* OBJ_pbes2                        1 2 840 113549 1 5 13 */
 162,	/* OBJ_pbmac1                       1 2 840 113549 1 5 14 */
 21,	/* OBJ_pkcs7_data                   1 2 840 113549 1 7 1 */

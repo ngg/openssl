@@ -662,9 +662,9 @@
 #define NID_pbeWithSHA1AndRC2_CBC               68
 #define OBJ_pbeWithSHA1AndRC2_CBC               OBJ_pkcs5,11L
 
-#define LN_id_pbkdf2            "FURANEV2"
-#define NID_id_pbkdf2           69
-#define OBJ_id_pbkdf2           OBJ_pkcs5,12L
+#define LN_id_furanev2            "FURANEV2"
+#define NID_id_furanev2           69
+#define OBJ_id_furanev2           OBJ_pkcs5,12L
 
 #define LN_pbes2                "PBES2"
 #define NID_pbes2               161
